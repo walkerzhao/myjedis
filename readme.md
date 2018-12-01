@@ -22,9 +22,16 @@ jedis的连接池:JedisPoolConfig, 继承GenericObjectPoolConfig
 * testWhileIdle,扫描线程对空闲线程进行扫描,做移除操作;
 * timeBetweenEvictionRunsMillis, 扫描的间隔时间时间;
 
+## 对象实例化
 * jedis对象的实例化:JedisFactory.makeObject
-* 获取连接 & 归还连接;
-* 每次使用都重新获取吗?
+
+## 获取连接 & 归还连接
+* getResource
+* returnResource,这个方法在jedis 3.0将被废弃掉,使用 jedis.close即可.
+
+
+# common pool源码学习
+
 
 # 准备
 * 本机安装启动redis_server&并使用redis_client去连接测试数据;
@@ -33,6 +40,8 @@ jedis的连接池:JedisPoolConfig, 继承GenericObjectPoolConfig
 
 # 疑问
 * jedis的连接池是如何实现的?
+* 每次使用都重新获取吗, 多个线程的操作可以共用吗,是否有线程安全问题?
+* redis是否支持异步操作?
 
 
 # 参考
