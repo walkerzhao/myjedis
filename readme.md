@@ -6,7 +6,9 @@
 
 # jedis连接池学习
 ## 连接池创建--JedisPool
-Jedis对象缓存到common-pool2中的对象池;
+* Jedis对象缓存到common-pool2中的对象池;
+* jedisPool的构建过程:借助JedisFactory 工厂类去管理对象:创建/销毁/激活/有效性校验;
+* JedisFactory实现了PooledObjectFactory接口,通过接口实现的方式,实现了解耦,自己的东西自己去实现,common pool不侵入任何逻辑;
 
 
 ## 连接池参数设置
@@ -15,7 +17,10 @@ jedis的连接池:JedisPoolConfig, 继承GenericObjectPoolConfig
 * maxIdle,池中最多有多少个空闲的jedis实例;
 * whenExhaustedAction,当池中都被分配完的时候,采取的行为:抛异常/阻塞住或者到maxWait时抛出异常/新建jedis实例,maxActive无效;
 * maxWait,申请一个jedis实例时候的最大等待时间;
-* testOnBorrow,
+* testOnBorrow, 提前进行validate的操作,保证borrow的时候,是可用的;
+* testOnReturn
+* testWhileIdle,扫描线程对空闲线程进行扫描,做移除操作;
+* timeBetweenEvictionRunsMillis, 扫描的间隔时间时间;
 
 * jedis对象的实例化:JedisFactory.makeObject
 * 获取连接 & 归还连接;
