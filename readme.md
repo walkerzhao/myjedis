@@ -31,6 +31,19 @@ jedis的连接池:JedisPoolConfig, 继承GenericObjectPoolConfig
 
 
 # common pool源码学习
+* common pool是apache的一个对象池化的组件.
+* 几个概念:对象池(容器);对象池工厂(管理对象池);池对象(具体需要管理的对象,比如jedis对象);池对象工厂(管理池对象的);
+* 有空可以和druid的连接池做对比;
+https://blog.csdn.net/u011784767/article/details/78337448
+https://blog.csdn.net/qq447995687/article/details/80233621
+
+
+
+# redis协议
+redis client和server端的交互息协议可以参考:https://www.cnblogs.com/smark/p/3247620.html
+
+# redis性能压测
+* redis benchmark压测工具:https://blog.csdn.net/zlfprogram/article/details/74338685
 
 
 # 准备
@@ -42,6 +55,7 @@ jedis的连接池:JedisPoolConfig, 继承GenericObjectPoolConfig
 * jedis的连接池是如何实现的?
 * 每次使用都重新获取吗, 多个线程的操作可以共用吗,是否有线程安全问题?
 * redis是否支持异步操作?
+* 如何做全面的压测?
 
 
 # 参考
